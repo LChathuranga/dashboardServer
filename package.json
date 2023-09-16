@@ -1,0 +1,28 @@
+{
+  "name": "MERNDashboarApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LChathuranga/MERNDashboarApp.git",
+  "author": "@lahiruchathuranga19981214 <lahiruchathuranga19981214@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "countries-list": "^2.6.1",
+    "country-iso-2-to-3": "^1.1.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.2.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}
