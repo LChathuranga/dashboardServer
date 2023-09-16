@@ -26,7 +26,7 @@ dotenv.config();
 const app = express();
 app.use(
     cors({
-        origin: 'https://witty-grass-0a3dca310.3.azurestaticapps.net/', 
+        origin: 'https://witty-grass-0a3dca310.3.azurestaticapps.net',
         credentials: true,
     })
 );
