@@ -5,12 +5,13 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user && await user.matchPasswords(password)) {
-        generateToken(res, user._id, user.role);
+        const generatedToken = generateToken(res, user._id, user.role);
         res.status(201).json({
             _id: user._id,
             name: user.name,
             role: user.role,
-            email: user.email
+            email: user.email,
+            token: generatedToken
         });
     }
     else {
@@ -43,12 +44,13 @@ export const register = async () => {
     });
 
     if (user) {
-        generateToken(res, user._id, user.role);
+        const generatedToken = generateToken(res, user._id, user.role);
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
-            role: user.role
+            role: user.role,
+            token: generatedToken
         });
     }
     else {

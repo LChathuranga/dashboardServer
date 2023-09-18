@@ -3,6 +3,7 @@ import User from '../models/User.js';
 
 export const protect = (allowedRoles) => async (req, res, next) => {
     let token;
+    const authHeader = req.headers['authorization'];
     if (req.cookies && req.cookies.jwt) {
         token = req.cookies.jwt;
     } else {
