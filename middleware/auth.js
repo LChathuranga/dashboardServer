@@ -3,21 +3,22 @@ import User from '../models/User.js';
 
 export const protect = (allowedRoles) => async (req, res, next) => {
     let token;
-    const authHeader = req.headers['authorization'];
+    console.log("req", req);
+    console.log("cookie", req.cookies);
     if (req.cookies && req.cookies.jwt) {
         token = req.cookies.jwt;
     } else {
         console.log("JWT cookie is undefined");
     }
 
-    if(token){
+    if (token) {
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
             req.user = await User.findById(decode.userId).select('-password');
             if (allowedRoles.includes(req.user.role)) {
                 console.log(req.user.role, decode.role);
                 next();
-            }else{
+            } else {
                 res.status(401).json({
                     message: 'Not Authorized to access'
                 });
@@ -28,7 +29,7 @@ export const protect = (allowedRoles) => async (req, res, next) => {
             });
         }
     }
-    else{
+    else {
         res.status(401).json({
             message: 'Not Authorized, no token'
         });
